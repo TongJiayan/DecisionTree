@@ -218,7 +218,7 @@ void treeGenerate(Node* root,vector<Data> trainData, vector<int> attrSet)
     // 从属性集中删除已划分的属性
     for(int i=0;i<attrSet.size();i++)
         if(attrSet[i]==root->attr)
-        {
+        {dao
             attrSet.erase(attrSet.begin()+i);
             break;
         }
@@ -283,6 +283,40 @@ double evaluate(Node* root,vector<Data> testData )
     return accuracy;
 }
 
+//double evaluate(vector<vector<Data>> totalData)
+//{
+//    double accuracy = 0;
+//    int iteration = 10;
+//    vector<Data> trainData;
+//    vector<Data> testData;
+//    for(int i=0;i<iteration;i++)
+//    {
+//        splitDataset(totalData,trainData,testData);
+//        Node* root = new Node();
+//        vector<int> attrSet = {0,1,2,3};
+//        treeGenerate(root,trainData, attrSet);
+//
+//        int right = 0, wrong = 0; //区分正确的样本数和区分错误的样本数
+//        int groundTruth = -1, predictResult = -1;
+//
+//        for(auto data : testData)
+//        {
+//            groundTruth = data.label;
+//            predictResult = predict(root, data.attr);
+//            if(groundTruth != predictResult)
+//                wrong++;
+//            else
+//                right++;
+//        }
+//        accuracy += right*1.0 / (right+wrong);
+//        trainData.clear();
+//        testData.clear();
+//        cout<<i<<endl;
+//        delete(root);
+//    }
+//
+//    return (accuracy/iteration);
+//}
 int main()
 {
 //    //调试时数据文件需要放到"cmake-build-debug"文件夹下
